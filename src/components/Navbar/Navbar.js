@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import LogoutButton from '../LogoutButton/LogoutButton';
+import styles from './Navbar.module.scss';
 
 const links = [
     {
@@ -36,16 +38,17 @@ const links = [
 
 function Navbar() {
     return (
-        <nav>
-            <Link href='/'>WebDev Blogs</Link>
-            <div>
+        <nav className={styles.nav}>
+            <Link href='/' className={styles.logo}>WebDev Blogs</Link>
+            <div className={styles.links}>
                 {links.map(({ id, title, url }) => {
                     return (
-                        <Link key={id} href={url}>
+                        <Link className={styles.link} key={id} href={url}>
                             {title}
                         </Link>
                     );
                 })}
+              <LogoutButton />
             </div>
         </nav>
     );
